@@ -47,7 +47,7 @@ if __name__ == "__main__":
   count = 1
 
   try:
-    opts, args = getopt.getopt(sys.argv[1:], "gc:h", ["gateway=", "channel=", "help"])
+    opts, args = getopt.getopt(sys.argv[1:], "c:g:h", ["gateway=", "channel=", "help"])
   except getopt.GetoptError as err:
     print str(err)
     usage()
