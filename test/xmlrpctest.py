@@ -61,7 +61,7 @@ if __name__ == "__main__":
       gateway = a
 
     elif o in ("-c", "--channel"):
-      print "Channel:" + a
+      channel = a
 
     elif o in ("-h", "--help"):
       usage()
@@ -73,8 +73,11 @@ if __name__ == "__main__":
       sys.exit(2)
 
 
+
+  print "\nChannel: %s\nGateway: %s\n"%(channel,gateway)
+
   if (channel == None or gateway == None):
-    useage()
+    usage()
     sys.exit(2)
 
   while reply == False and count < 4:
@@ -91,7 +94,6 @@ if __name__ == "__main__":
     sys.exit(2) 
 
   print reply[0]['StringValue'] + ' : ' + str(reply[0]['IntValue'])
-
 
 
 
