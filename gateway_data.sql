@@ -17,11 +17,12 @@
 -- Using PDO See: http://php.net/manual/en/book.pdo.php
 --
 
+DROP TABLE IF EXISTS channels;
+
 CREATE TABLE `channels` (
   `channel` varchar(36) NOT NULL,
   `uri` varchar(60) NOT NULL,
-  PRIMARY KEY (`channel`),
-  UNIQUE KEY `channels_undx` (`channel`)
+  `item` varchar(36) NOT NULL,
+  PRIMARY KEY (`item`),
+  UNIQUE KEY `item` (`item`,`channel`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COMMENT='Active lsl xmlrpc channels on the grid';
-
-

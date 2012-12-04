@@ -10,20 +10,20 @@
 #
 #
 
-from xmlrpclib import ServerProxy
+from xmlrpclib import ServerProxy, Error
 import sys, getopt
 import socket
 
 socket.setdefaulttimeout(5)
-channel = sys.argv[1]
+#channel = sys.argv[1]
 
 
 def llRemoteData(Channel, Int, String):
   client = ServerProxy(gateway)
   try:
     return client.llRemoteData({"Channel" : Channel, "IntValue" : Int, "StringValue" : String})
-  except:
-    print "Error! %s" % count
+  except Error as v:
+    # print "Error: %s %s" % (v, channel)
     return False
 
 
@@ -44,7 +44,7 @@ def usage():
 if __name__ == "__main__":
 
   reply = False
-  count = 1
+  count = 0
 
   try:
     opts, args = getopt.getopt(sys.argv[1:], "c:g:h", ["gateway=", "channel=", "help"])
@@ -74,7 +74,7 @@ if __name__ == "__main__":
 
 
 
-  print "\nChannel: %s\nGateway: %s\n"%(channel,gateway)
+  #print "\nChannel: %s\nGateway: %s\n"%(channel,gateway)
 
   if (channel == None or gateway == None):
     usage()
@@ -83,17 +83,31 @@ if __name__ == "__main__":
   while reply == False and count < 4:
 
     try:
-      print "Trying %s - tried %s times." % (channel, str(count))
+      # print "Trying %s - tried %s times." % (channel, str(count))
       count = count +1
       reply = llRemoteData(channel, 0, "Hello from " + sys.platform);
+      #if (reply == False):
+        #print "Issue connecting to channel %s" % channel
+
     except:
       print "Re-trying %s" % channel
+
+  if ( reply == False ):
+    print "Could not connect to channel %s" % channel
+    sys.exit(2)
 
   if ('success' in reply):
     print "Error! %s"%reply['errorMessage']
     sys.exit(2) 
 
-  print reply[0]['StringValue'] + ' : ' + str(reply[0]['IntValue'])
+  message = None
+  hits = None
+  if ('StringValue' in reply[0]):
+    message = reply[0]['StringValue']
+  if ('IntValue' in reply[0]):
+    hits = reply[0]['IntValue']
+
+  print '\n%s\nChannel: %s"\n"Object has been contacted %s times\nContact made in %d attempts\n'%(message,channel,hits,count)
 
 
 
