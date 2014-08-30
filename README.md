@@ -3,28 +3,11 @@ XmlRpcRouter
 
 Consolidation gateway for Opensimulator xmlrpc (llRemoteData)
 
- Skip to content
-This repository
 
-    Explore
-    Gist
-    Blog
-    Help
-
-    BlueWall (James Hughes) BlueWall
-
-    3
-    2
-    0
-
-BlueWall/XmlRpcRouter
-
-XmlRpcRouter / INSTRUCTIONS.TXT
+INSTRUCTIONS.TXT
 BlueWall (James Hughes) BlueWall on Nov 19, 2012
-Initial commit
 
-1 contributor
-93 lines (55 sloc) 3.26 kb
+
 XMLRPC Gateway Installation Instructions
 * General:
 The xmlrpc gateway is an application to act as a proxy that allows
@@ -80,17 +63,3 @@ distributed under the License is distributed on an "AS IS" BASIS,
 WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
-
-    Status
-    API
-    Training
-    Shop
-    Blog
-    About
-
-    © 2014 GitHub, Inc.
-    Terms
-    Privacy
-    Security
-    Contact
-
