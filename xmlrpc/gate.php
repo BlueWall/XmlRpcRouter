@@ -6,7 +6,7 @@ include 'config.inc';
 global $gwDebugFile, $gwDbHost, $gwDbUser, $gwDbPass, $gwDbName, $gwDbDriver;
 
 $method = $_SERVER["PATH_INFO"];
-$msg = $HTTP_RAW_POST_DATA;
+$msg = file_get_contents("php://input");
 
 try {
   $xml = new SimpleXMLElement($msg);

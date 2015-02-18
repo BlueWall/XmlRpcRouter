@@ -190,7 +190,7 @@ function get_channel($rpc) {
 }
 
 
-$xml = $HTTP_RAW_POST_DATA;
+$xml = file_get_contents("php://input");
 $rpc = new SimpleXMLElement($xml);
 $funct = $rpc->methodName[0]."";
 $funct($xml, $rpc);
