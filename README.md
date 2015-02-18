@@ -1,0 +1,65 @@
+XmlRpcRouter
+============
+
+Consolidation gateway for Opensimulator xmlrpc (llRemoteData)
+
+
+INSTRUCTIONS.TXT
+BlueWall (James Hughes) BlueWall on Nov 19, 2012
+
+
+XMLRPC Gateway Installation Instructions
+* General:
+The xmlrpc gateway is an application to act as a proxy that allows
+simulators to register the gateway uri so objects using remote data may be
+accessed from a central uri. To use the gateway, you must configure the
+simulator to use the XmlRpcGridRouter module and supply your gateway
+uri so your simulator will register open channels with the gateway
+application. Your external applications using remote data will access the
+object in the simulator by sending the gateway an xmlrpc message with the
+channel and payload data. The gateway will proxy the call to the correct
+simulator wich will process the call then send a response. The response
+is returned to the gateway which forwards it back to your external program.
+* Web Server:
+1) Install the files into your web server document root, or prepare a new
+document root to serve the application.
+2) Move the config.inc file to a location outside of the document root and
+edit gate.php and index.php to adjust the location to the file.
+3) Edit config.inc and set the database connection parameters for your
+database. See: http://php.net/manual/en/book.pdo.php for information
+about the PDO database abstraction library.
+4) Create the database...
+* Database:
+1) Create the database and set permissions for the user that will access
+the data using the values in your config.inc file. See the inlcuded
+file 'gateway_data.sql' for details. This file will create the table
+for MySQL. You can make adjustments to support the databse you are
+using. See: http://php.net/manual/en/book.pdo.php for more information
+* Operation:
+1) Create an object and install the included script. Note the channel
+that is reported when the script starts.
+2) Check for the channel in the database.
+3) Use the included test to send a message into the simulator. You will
+see a report in-world and will see the returned message from the test.
+* Troubleshooting:
+* Simulator<-->Gateway *
+1) Check that the channel is registered in the database.
+2) Look at your web server access and error logs to see that the simulator
+is attemting to register the channel.
+3) Check your simulator configuration for the proper module assignment and
+port assignemnt.
+4) Enable debugging in the gateway and watch the log for information.
+* Application<-->Gateway *
+1) Check your webserver access and error logs.
+2) Enable debugging in the gateway and watch the log.
+3) Be sure that the channel is valid and registered in the database.
+Copyright (c) 2008-2012 BlueWall Information Technologies, LLC
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+http://www.apache.org/licenses/LICENSE-2.0
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
