@@ -53,6 +53,9 @@ port assignemnt.
 1) Check your webserver access and error logs.
 2) Enable debugging in the gateway and watch the log.
 3) Be sure that the channel is valid and registered in the database.
+
+See: http://lslwiki.net/lslwiki/wakka.php?wakka=XMLRPCImplementations for further information about integrating xmlrpc clients in various languages for use with remote data.
+
 Copyright (c) 2008-2012 BlueWall Information Technologies, LLC
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
